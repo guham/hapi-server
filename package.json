@@ -6,7 +6,7 @@
   "author": "Guillaume Hamoniez <guham.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "build": "tsc",
     "dev": "NODE_ENV=development nodemon --config nodemon.json",
     "lint": "eslint --fix 'src/**'"
