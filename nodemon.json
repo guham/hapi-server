@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ext": "ts,json",
+  "verbose": false,
+  "exec": "ts-node ./src/server.ts",
+  "args": [
+    "--inspect=0.0.0.0:9229 --nolazy"
+  ]
+}
