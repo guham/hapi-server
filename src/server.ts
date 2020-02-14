@@ -1,11 +1,12 @@
-import Hapi from '@hapi/hapi';
+import Hapi, { Server } from '@hapi/hapi';
 
-const initServer = async () => new Hapi.Server({
-  port: 3000,
-  host: 'localhost',
-});
+const initServer = async (): Promise<Server> =>
+  new Hapi.Server({
+    port: 3000,
+    host: 'localhost',
+  });
 
-const start = async () => {
+const start = async (): Promise<void> => {
   try {
     const server = await initServer();
     await server.start();
@@ -16,7 +17,7 @@ const start = async () => {
   }
 };
 
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', err => {
   console.log(err);
   process.exit(1);
 });
