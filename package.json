@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
+    "dotenv": "^8.2.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/hapi__hapi": "^19.0.1",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
