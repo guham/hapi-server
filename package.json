@@ -8,14 +8,16 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "nodemon --config nodemon.json",
+    "dev": "NODE_ENV=development nodemon --config nodemon.json",
     "lint": "eslint --fix 'src/**'"
   },
   "dependencies": {
-    "@hapi/hapi": "^19.1.1"
+    "@hapi/hapi": "^19.1.1",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/hapi__hapi": "^19.0.1",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.8.0",
