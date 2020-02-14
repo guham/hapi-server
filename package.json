@@ -7,9 +7,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/src/server.js",
-    "build": "tsc",
     "dev": "NODE_ENV=development nodemon --config nodemon.json",
-    "lint": "eslint --fix 'src/**'"
+    "build": "tsc",
+    "lint": "eslint --fix 'src/**'",
+    "doc": "raml2html doc/contract.raml > doc/html/index.html"
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
@@ -29,6 +30,7 @@
     "lint-staged": "^10.0.7",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
+    "raml2html": "^7.5.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },

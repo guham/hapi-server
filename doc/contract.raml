@@ -1,0 +1,12 @@
+#%RAML 1.0
+title: hapi-server - contract
+version: v1
+baseUri: "http://127.0.0.1:3000/{version}"
+protocols: HTTPS
+mediaType: application/json
+description: |
+  hapi-server API provides RESTful interfaces
+documentation: |
+  - title: Credentials
+    content: |
+      hapi-server APIs requires a JSON Web Token (JWT) strategy for authentication
