@@ -1,8 +1,10 @@
 import 'dotenv/config';
-import Hapi, { Server, Request, ResponseObject } from '@hapi/hapi';
+
+import Hapi, { Server } from '@hapi/hapi';
 
 import { env } from './env';
 import { Logger } from './lib';
+import { addSubscribers } from './subscribers';
 
 const log = new Logger(__filename);
 
@@ -15,19 +17,7 @@ const initServer = async (): Promise<Server> =>
 const start = async (): Promise<void> => {
   try {
     const server = await initServer();
-
-    server.events.on('response', (req: Request) => {
-      const responseTime = req.info.completed - req.info.received;
-      log.info(
-        `${req.method.toUpperCase()} ${req.path} ${(req.response as ResponseObject).statusCode} ${responseTime} ms`,
-      );
-    });
-
-    server.events.on('start', () => {
-      log.info(`⚡️ ${env.api.name}@${env.api.version}, API version: ${env.api.apiVersion}`);
-      log.info(`🚀 Server ready at ${server.info.uri}`);
-    });
-
+    await addSubscribers(server);
     await server.start();
   } catch (error) {
     log.error('Unable to start the server', error.message);
