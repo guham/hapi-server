@@ -7,10 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/src/server.js",
-    "dev": "NODE_ENV=development nodemon --config nodemon.json",
+    "watch-src": "NODE_ENV=development nodemon --config nodemon.json",
+    "watch-doc": "NODE_ENV=development nodemon --config nodemon-doc.json",
     "build": "tsc",
     "lint": "eslint --fix 'src/**'",
-    "doc": "raml2html doc/contract.raml > doc/html/index.html"
+    "serve-doc": "http-server ./doc -a 127.0.0.1 -p 3001",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Doc,Html\" -c \"green.bold,cyan.bold,white.bold\" \"yarn run watch-src\" \"yarn run watch-doc\" \"yarn run serve-doc\""
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
@@ -23,9 +25,11 @@
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "http-server": "^0.12.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7",
     "nodemon": "^2.0.2",
