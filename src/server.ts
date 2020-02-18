@@ -5,6 +5,7 @@ import Hapi, { Server } from '@hapi/hapi';
 import { env } from './env';
 import { Logger } from './lib';
 import { addSubscribers } from './subscribers';
+import { routes } from './routes';
 
 const log = new Logger(__filename);
 
@@ -18,6 +19,7 @@ const start = async (): Promise<void> => {
   try {
     const server = await initServer();
     await addSubscribers(server);
+    server.route(routes);
     await server.start();
   } catch (error) {
     log.error('Unable to start the server', error.message);
