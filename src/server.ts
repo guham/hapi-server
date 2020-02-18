@@ -19,7 +19,11 @@ const start = async (): Promise<void> => {
   try {
     const server = await initServer();
     await addSubscribers(server);
+
+    // prefix all routes with API version
+    server.realm.modifiers.route.prefix = `/api/${env.api.apiVersion}`;
     server.route(routes);
+
     await server.start();
   } catch (error) {
     log.error('Unable to start the server', error.message);

@@ -1,7 +1,11 @@
 import Boom from '@hapi/boom';
 import { ServerRoute } from '@hapi/hapi';
 
+import { routes as userRoutes } from './api/users/routes';
+
 export const routes: ServerRoute[] = [
+  ...userRoutes,
+  // catch-all route
   {
     method: '*',
     path: '/{any*}',
