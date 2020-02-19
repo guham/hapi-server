@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { Request, ResponseToolkit } from '@hapi/hapi';
 
-import { Controller } from '../api/interfaces';
+import { Controller } from '../interfaces';
 
 @injectable()
 export class BaseController<Entity> implements Controller<Entity> {

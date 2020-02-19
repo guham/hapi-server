@@ -1,13 +1,17 @@
 import { ServerRoute } from '@hapi/hapi';
 
-import { controller } from './controller';
+import { container } from '../../container';
+import { TYPES } from '../../types';
+import { UserController } from './controller';
+
+const userController = container.get<UserController>(TYPES.UserController);
 
 export const routes: ServerRoute[] = [
   {
     method: 'GET',
     path: '/users',
     options: {
-      handler: controller.find,
+      handler: userController.find,
     },
   },
 ];

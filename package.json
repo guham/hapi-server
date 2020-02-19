@@ -17,6 +17,8 @@
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
     "dotenv": "^8.2.0",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
     "winston": "^3.2.1"
   },
   "devDependencies": {

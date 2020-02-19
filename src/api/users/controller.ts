@@ -1,6 +1,16 @@
-import { BaseController } from '../../common/baseController';
-import { User } from './models/User';
+import { inject, injectable } from 'inversify';
 
-export class UserController extends BaseController<User> {}
+import { TYPES } from '../../types';
+import { BaseController } from '../common';
+import { User } from './models';
+import { UserService } from './services';
 
-export const controller = new UserController();
+@injectable()
+export class UserController extends BaseController<User> {
+  private service: UserService;
+
+  public constructor(@inject(TYPES.UserService) service: UserService) {
+    super();
+    this.service = service;
+  }
+}

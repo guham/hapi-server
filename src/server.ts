@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import 'reflect-metadata';
 
 import Hapi, { Server } from '@hapi/hapi';
 
