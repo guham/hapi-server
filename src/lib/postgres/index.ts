@@ -1,0 +1,1 @@
+export { PostgresRepository } from './PostgresRepository';
