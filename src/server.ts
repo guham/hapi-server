@@ -5,8 +5,8 @@ import Hapi, { Server } from '@hapi/hapi';
 
 import { env } from './env';
 import { Logger } from './lib';
-import { addSubscribers } from './subscribers';
 import { routes } from './routes';
+import { addSubscribers } from './subscribers';
 
 const log = new Logger(__filename);
 

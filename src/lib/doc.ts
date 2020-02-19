@@ -1,6 +1,6 @@
-import raml2html from 'raml2html';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import raml2html from 'raml2html';
 
 import { Logger } from './logger';
 
