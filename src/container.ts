@@ -1,6 +1,6 @@
 import { Container, interfaces } from 'inversify';
 
-import { Controller, Repository, Service } from './api/interfaces';
+import { Controller, LoggerInterface, Repository, Service } from './api/interfaces';
 import { UserController } from './api/users/controller';
 import { User } from './api/users/models';
 import { UserRepository } from './api/users/repositories';
@@ -10,7 +10,7 @@ import { TYPES } from './types';
 
 const container = new Container();
 
-container.bind<interfaces.Newable<Logger>>(TYPES.NewableLogger).toConstructor<Logger>(Logger);
+container.bind<interfaces.Newable<LoggerInterface>>(TYPES.NewableLogger).toConstructor<LoggerInterface>(Logger);
 // services
 container.bind<Service<User>>(TYPES.UserService).to(UserService);
 // controllers

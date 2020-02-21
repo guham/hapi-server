@@ -3,6 +3,8 @@ import { injectable, optional } from 'inversify';
 import * as path from 'path';
 import winston, { configure, format, transports } from 'winston';
 
+import { LoggerInterface } from '../api/interfaces';
+
 configure({
   transports: [
     new transports.Console({
@@ -17,7 +19,7 @@ configure({
 });
 
 @injectable()
-export class Logger {
+export class Logger implements LoggerInterface {
   public static DEFAULT_SCOPE = 'server';
 
   private scope: string;
@@ -55,6 +57,7 @@ export class Logger {
       filepath = filepath.replace(process.cwd(), '');
       filepath = filepath.replace(`${path.sep}src${path.sep}`, '');
       filepath = filepath.replace(`${path.sep}dist${path.sep}`, '');
+      filepath = filepath.replace(`${path.sep}scripts${path.sep}`, '');
       filepath = filepath.replace('.ts', '');
       filepath = filepath.replace('.js', '');
       filepath = filepath.replace(path.sep, ':');

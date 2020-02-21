@@ -2,12 +2,12 @@ import { interfaces } from 'inversify';
 
 import { Request, ResponseObject, Server } from '@hapi/hapi';
 
+import { LoggerInterface } from './api/interfaces';
 import { container } from './container';
 import { env } from './env';
-import { Logger } from './lib';
 import { TYPES } from './types';
 
-const log = new (container.get<interfaces.Newable<Logger>>(TYPES.NewableLogger))(__filename);
+const log = new (container.get<interfaces.Newable<LoggerInterface>>(TYPES.NewableLogger))(__filename);
 
 const onResponse = (req: Request): void => {
   const responseTime = req.info.completed - req.info.received;
