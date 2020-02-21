@@ -1,3 +1,4 @@
+import { injectable, optional } from 'inversify';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as path from 'path';
 import winston, { configure, format, transports } from 'winston';
@@ -15,12 +16,13 @@ configure({
   ],
 });
 
+@injectable()
 export class Logger {
   public static DEFAULT_SCOPE = 'server';
 
   private scope: string;
 
-  constructor(scope?: string) {
+  constructor(@optional() scope?: string) {
     this.scope = this.parsePathToScope(scope ? scope : Logger.DEFAULT_SCOPE);
   }
 

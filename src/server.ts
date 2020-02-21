@@ -1,14 +1,18 @@
 import 'dotenv/config';
 import 'reflect-metadata';
 
+import { interfaces } from 'inversify';
+
 import Hapi, { Server } from '@hapi/hapi';
 
+import { container } from './container';
 import { env } from './env';
 import { Logger } from './lib';
 import { routes } from './routes';
 import { addSubscribers } from './subscribers';
+import { TYPES } from './types';
 
-const log = new Logger(__filename);
+const log = new (container.get<interfaces.Newable<Logger>>(TYPES.NewableLogger))(__filename);
 
 const initServer = async (): Promise<Server> =>
   new Hapi.Server({

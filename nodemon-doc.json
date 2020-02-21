@@ -2,5 +2,5 @@
   "watch": ["doc"],
   "ext": "raml",
   "verbose": false,
-  "exec": "ts-node ./src/lib/doc.ts"
+  "exec": "ts-node ./scripts/doc.ts"
 }
