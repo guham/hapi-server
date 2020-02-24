@@ -1,9 +1,8 @@
+import { types as userTypes } from './api/users/types';
+
 const TYPES = {
   NewableLogger: Symbol.for('Newable<Logger>'),
-  BaseController: Symbol.for('BaseController'),
-  UserService: Symbol.for('UserService'),
-  UserController: Symbol.for('UserController'),
-  UserRepository: Symbol.for('UserRepository'),
+  ...userTypes,
 };
 
 export { TYPES };
