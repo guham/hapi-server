@@ -1,7 +1,8 @@
 import { types as userTypes } from './api/users/types';
+import { TYPES as libTypes } from './lib';
 
 const TYPES = {
-  NewableLogger: Symbol.for('Newable<Logger>'),
+  ...libTypes,
   ...userTypes,
 };
 
