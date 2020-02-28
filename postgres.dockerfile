@@ -1,0 +1,4 @@
+FROM postgres:12-alpine
+
+ARG DB_PORT=5432
+EXPOSE ${DB_PORT}
