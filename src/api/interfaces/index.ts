@@ -1,4 +1,4 @@
-export { Service } from './service';
-export { Controller } from './controller';
-export { Repository } from './repository';
+export { ServiceInterface } from './serviceInterface';
+export { ControllerInterface } from './controllerInterface';
+export { RepositoryInterface } from './repositoryInterface';
 export { LoggerInterface } from './loggerInterface';

@@ -1,6 +1,6 @@
 import { Request, ResponseToolkit } from '@hapi/hapi';
 
-export interface Controller<Entity> {
+export interface ControllerInterface<Entity> {
   find(req: Request, h: ResponseToolkit): Promise<Entity[]>;
 
   findOne(req: Request, h: ResponseToolkit): Promise<Entity>;

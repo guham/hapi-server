@@ -2,10 +2,10 @@ import { injectable } from 'inversify';
 
 import { Request, ResponseToolkit } from '@hapi/hapi';
 
-import { Controller, LoggerInterface } from '../interfaces';
+import { ControllerInterface, LoggerInterface } from '../interfaces';
 
 @injectable()
-export abstract class BaseController<Entity> implements Controller<Entity> {
+export abstract class BaseController<Entity> implements ControllerInterface<Entity> {
   protected logger: LoggerInterface;
 
   public async find(req: Request, h: ResponseToolkit): Promise<Entity[]> {

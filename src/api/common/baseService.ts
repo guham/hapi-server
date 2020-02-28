@@ -1,9 +1,9 @@
 import { injectable } from 'inversify';
 
-import { LoggerInterface, Service } from '../interfaces';
+import { LoggerInterface, ServiceInterface } from '../interfaces';
 
 @injectable()
-export abstract class BaseService<Entity> implements Service<Entity> {
+export abstract class BaseService<Entity> implements ServiceInterface<Entity> {
   protected logger: LoggerInterface;
 
   public async find(): Promise<Entity[]> {

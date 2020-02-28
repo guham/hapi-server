@@ -1,4 +1,4 @@
-export interface Repository<Entity> {
+export interface RepositoryInterface<Entity> {
   find(): Promise<Entity[]>;
 
   findOneById(): Promise<Entity>;

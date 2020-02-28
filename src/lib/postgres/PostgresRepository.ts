@@ -1,9 +1,9 @@
 import { injectable } from 'inversify';
 
-import { LoggerInterface, Repository } from '../../api/interfaces';
+import { LoggerInterface, RepositoryInterface } from '../../api/interfaces';
 
 @injectable()
-export abstract class PostgresRepository<Entity> implements Repository<Entity> {
+export abstract class PostgresRepository<Entity> implements RepositoryInterface<Entity> {
   protected logger: LoggerInterface;
 
   public async find(): Promise<Entity[]> {

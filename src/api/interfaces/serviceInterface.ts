@@ -1,4 +1,4 @@
-export interface Service<Entity> {
+export interface ServiceInterface<Entity> {
   find(): Promise<Entity[]>;
 
   findOne(): Promise<Entity>;
