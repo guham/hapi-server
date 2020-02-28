@@ -1,10 +1,10 @@
 import { inject, injectable, interfaces } from 'inversify';
 
-import { TYPES } from '../../types';
-import { BaseController } from '../common';
-import { LoggerInterface } from '../interfaces';
-import { User } from './models';
-import { UserService } from './services';
+import { TYPES } from '../../../types';
+import { BaseController } from '../../common';
+import { LoggerInterface } from '../../interfaces';
+import { User } from '../models';
+import { UserService } from '../services';
 
 @injectable()
 export class UserController extends BaseController<User> {

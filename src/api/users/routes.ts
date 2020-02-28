@@ -2,7 +2,7 @@ import { ServerRoute } from '@hapi/hapi';
 
 import { container } from '../../container';
 import { TYPES } from '../../types';
-import { UserController } from './controller';
+import { UserController } from './controllers';
 
 const userController = container.get<UserController>(TYPES.UserController);
 

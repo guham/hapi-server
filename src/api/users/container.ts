@@ -1,7 +1,7 @@
 import { ContainerModule, interfaces } from 'inversify';
 
 import { Controller, Repository, Service } from '../interfaces';
-import { UserController } from './controller';
+import { UserController } from './controllers';
 import { User } from './models';
 import { UserRepository } from './repositories';
 import { UserService } from './services';
