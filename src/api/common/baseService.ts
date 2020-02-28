@@ -1,16 +1,12 @@
 import { injectable } from 'inversify';
 
-import { LoggerInterface, Repository } from '../../api/interfaces';
+import { LoggerInterface, Service } from '../interfaces';
 
 @injectable()
-export abstract class PostgresRepository<Entity> implements Repository<Entity> {
+export abstract class BaseService<Entity> implements Service<Entity> {
   protected logger: LoggerInterface;
 
   public async find(): Promise<Entity[]> {
-    throw new Error('Method not implemented.');
-  }
-
-  public async findOneById(): Promise<Entity> {
     throw new Error('Method not implemented.');
   }
 
@@ -26,15 +22,7 @@ export abstract class PostgresRepository<Entity> implements Repository<Entity> {
     throw new Error('Method not implemented.');
   }
 
-  public async delete(): Promise<boolean> {
-    throw new Error('Method not implemented.');
-  }
-
-  public async countAll(): Promise<number> {
-    throw new Error('Method not implemented.');
-  }
-
-  protected async handleEntityManagerCalls<T>(): Promise<T> {
+  public async delete(): Promise<void> {
     throw new Error('Method not implemented.');
   }
 }
