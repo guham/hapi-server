@@ -5,7 +5,7 @@ import { Request, ResponseToolkit } from '@hapi/hapi';
 import { ControllerInterface, LoggerInterface } from '../interfaces';
 
 @injectable()
-export abstract class BaseController<Entity> implements ControllerInterface<Entity> {
+export abstract class Controller<Entity> implements ControllerInterface<Entity> {
   protected logger: LoggerInterface;
 
   public async find(req: Request, h: ResponseToolkit): Promise<Entity[]> {

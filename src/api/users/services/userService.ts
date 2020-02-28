@@ -1,13 +1,13 @@
 import { inject, injectable, interfaces } from 'inversify';
 
 import { TYPES } from '../../../types';
-import { BaseService } from '../../common';
+import { Service } from '../../abstract';
 import { LoggerInterface } from '../../interfaces';
 import { User } from '../models';
 import { UserRepository } from '../repositories';
 
 @injectable()
-export class UserService extends BaseService<User> {
+export class UserService extends Service<User> {
   private repository: UserRepository;
 
   public constructor(
