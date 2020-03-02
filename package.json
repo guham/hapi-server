@@ -7,12 +7,15 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/src/server.js",
-    "watch-src": "NODE_ENV=development nodemon --config nodemon.json",
-    "watch-doc": "NODE_ENV=development nodemon --config nodemon-doc.json",
+    "watch-src": "nodemon --config nodemon.json",
+    "watch-doc": "nodemon --config nodemon-doc.json",
     "build": "tsc",
     "lint": "eslint --fix 'src/**'",
     "serve-doc": "http-server ./doc -a 127.0.0.1 -p 3001",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Doc,Html\" -c \"green.bold,cyan.bold,white.bold\" \"yarn run watch-src\" \"yarn run watch-doc\" \"yarn run serve-doc\""
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Doc,Html\" -c \"green.bold,cyan.bold,white.bold\" \"yarn run watch-src\" \"yarn run watch-doc\" \"yarn run serve-doc\"",
+    "migrate:make": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:make --knexfile ./src/database/knexfile.ts",
+    "migrate:latest": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:latest --knexfile ./src/database/knexfile.ts",
+    "migrate:rollback": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:rollback --knexfile ./src/database/knexfile.ts"
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",

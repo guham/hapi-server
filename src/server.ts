@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import 'reflect-metadata';
 
 import { interfaces } from 'inversify';
@@ -7,7 +6,7 @@ import Hapi, { Server } from '@hapi/hapi';
 
 import { LoggerInterface } from './api/interfaces';
 import { container } from './container';
-import { initDb } from './db';
+import { initDb } from './database';
 import { env } from './env';
 import { routes } from './routes';
 import { addSubscribers } from './subscribers';
