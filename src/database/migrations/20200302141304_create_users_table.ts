@@ -2,7 +2,9 @@ import Knex, { SchemaBuilder } from 'knex';
 
 export async function up(knex: Knex): Promise<SchemaBuilder> {
   await knex.schema.createTable('users', t => {
-    t.uuid('id').primary();
+    t.uuid('id')
+      .primary()
+      .defaultTo(knex.raw('uuid_generate_v4()'));
     t.string('username')
       .unique()
       .notNullable();

@@ -15,7 +15,9 @@
     "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Doc,Html\" -c \"green.bold,cyan.bold,white.bold\" \"yarn run watch-src\" \"yarn run watch-doc\" \"yarn run serve-doc\"",
     "migrate:make": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:make --knexfile ./src/database/knexfile.ts",
     "migrate:latest": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:latest --knexfile ./src/database/knexfile.ts",
-    "migrate:rollback": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:rollback --knexfile ./src/database/knexfile.ts"
+    "migrate:rollback": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex migrate:rollback --knexfile ./src/database/knexfile.ts",
+    "seed:make": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex seed:make --knexfile ./src/database/knexfile.ts",
+    "seed:run": "node -r reflect-metadata -r dotenv/config ./node_modules/.bin/knex seed:run --knexfile ./src/database/knexfile.ts"
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
