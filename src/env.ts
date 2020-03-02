@@ -18,4 +18,11 @@ export const env = {
   log: {
     level: getOsEnv('LOG_LEVEL'),
   },
+  db: {
+    username: getOsEnv('DB_USERNAME'),
+    password: getOsEnv('DB_PASSWORD'),
+    name: getOsEnv('DB_NAME'),
+    host: getOsEnv('DB_HOST'),
+    port: getOsEnv('DB_PORT'),
+  },
 };

@@ -7,6 +7,7 @@ import Hapi, { Server } from '@hapi/hapi';
 
 import { LoggerInterface } from './api/interfaces';
 import { container } from './container';
+import { initDb } from './db';
 import { env } from './env';
 import { routes } from './routes';
 import { addSubscribers } from './subscribers';
@@ -28,6 +29,8 @@ const start = async (): Promise<void> => {
     // prefix all routes with API version
     server.realm.modifiers.route.prefix = `/api/${env.api.apiVersion}`;
     server.route(routes);
+
+    await initDb();
 
     await server.start();
   } catch (error) {
