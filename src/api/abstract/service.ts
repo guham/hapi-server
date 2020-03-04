@@ -1,13 +1,21 @@
 import { injectable } from 'inversify';
+import { Model } from 'objection';
 
+import { PostgresRepository } from '../../lib/postgres';
 import { LoggerInterface, ServiceInterface } from '../interfaces';
 
 @injectable()
-export abstract class Service<Entity> implements ServiceInterface<Entity> {
+export abstract class Service<Entity extends Model> implements ServiceInterface<Entity> {
   protected logger: LoggerInterface;
+  protected repository: PostgresRepository<Entity>;
 
   public async find(): Promise<Entity[]> {
-    throw new Error('Method not implemented.');
+    try {
+      return this.repository.find();
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async findOne(): Promise<Entity> {

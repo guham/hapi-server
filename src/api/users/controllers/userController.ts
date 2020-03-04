@@ -8,8 +8,6 @@ import { UserService } from '../services';
 
 @injectable()
 export class UserController extends Controller<User> {
-  private service: UserService;
-
   public constructor(
     @inject(TYPES.NewableLogger) Logger: interfaces.Newable<LoggerInterface>,
     @inject(TYPES.UserService) service: UserService,

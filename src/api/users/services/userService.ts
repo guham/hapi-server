@@ -8,8 +8,6 @@ import { UserRepository } from '../repositories';
 
 @injectable()
 export class UserService extends Service<User> {
-  private repository: UserRepository;
-
   public constructor(
     @inject(TYPES.NewableLogger) Logger: interfaces.Newable<LoggerInterface>,
     @inject(TYPES.UserRepository) repository: UserRepository,

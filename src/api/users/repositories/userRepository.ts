@@ -10,5 +10,6 @@ export class UserRepository extends PostgresRepository<User> {
   public constructor(@inject(TYPES.NewableLogger) Logger: interfaces.Newable<LoggerInterface>) {
     super();
     this.logger = new Logger(__filename);
+    this.model = User;
   }
 }
