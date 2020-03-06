@@ -15,4 +15,11 @@ export const routes: ServerRoute[] = [
       handler: async (req, h): Promise<User[]> => userController.find(req, h),
     },
   },
+  {
+    method: 'GET',
+    path: '/users/{id}',
+    options: {
+      handler: async (req, h): Promise<User> => userController.findOne(req, h),
+    },
+  },
 ];

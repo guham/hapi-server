@@ -18,8 +18,13 @@ export abstract class Service<Entity extends Model> implements ServiceInterface<
     }
   }
 
-  public async findOne(): Promise<Entity> {
-    throw new Error('Method not implemented.');
+  public async findOne(id: string): Promise<Entity> {
+    try {
+      return this.repository.findOneById(id);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async create(): Promise<Entity> {

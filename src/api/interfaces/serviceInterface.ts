@@ -1,7 +1,7 @@
 export interface ServiceInterface<Entity> {
   find(): Promise<Entity[]>;
 
-  findOne(): Promise<Entity>;
+  findOne(id: string): Promise<Entity>;
 
   create(): Promise<Entity>;
 

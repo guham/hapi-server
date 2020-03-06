@@ -1,7 +1,7 @@
 export interface RepositoryInterface<Entity> {
   find(): Promise<Entity[]>;
 
-  findOneById(): Promise<Entity>;
+  findOneById(id: string): Promise<Entity>;
 
   findOne(): Promise<Entity>;
 

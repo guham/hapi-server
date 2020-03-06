@@ -9,17 +9,20 @@ export abstract class PostgresRepository<Entity extends Model> implements Reposi
   protected model: ModelClass<Entity>;
 
   public async find(): Promise<Entity[]> {
-    try {
+    const findQuery = async (): Promise<Entity[]> => {
       const entities = await this.model.query().execute();
       return entities as Entity[];
-    } catch (error) {
-      this.logger.error(error);
-      throw error;
-    }
+    };
+
+    return this.handleEntityCalls(findQuery);
   }
 
-  public async findOneById(): Promise<Entity> {
-    throw new Error('Method not implemented.');
+  public async findOneById(id: string): Promise<Entity> {
+    const findOneByIdQuery = async (): Promise<Entity> => {
+      return (await this.model.query().findById(id)) as Entity;
+    };
+
+    return this.handleEntityCalls(findOneByIdQuery);
   }
 
   public async findOne(): Promise<Entity> {
@@ -42,7 +45,12 @@ export abstract class PostgresRepository<Entity extends Model> implements Reposi
     throw new Error('Method not implemented.');
   }
 
-  protected async handleEntityManagerCalls<T>(): Promise<T> {
-    throw new Error('Method not implemented.');
+  protected async handleEntityCalls<T>(fn: () => Promise<T>): Promise<T> {
+    try {
+      return await fn();
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 }

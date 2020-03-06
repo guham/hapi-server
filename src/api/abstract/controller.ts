@@ -21,7 +21,16 @@ export abstract class Controller<Entity extends Model> implements ControllerInte
   }
 
   public async findOne(req: Request, h: ResponseToolkit): Promise<Entity> {
-    throw new Error('Method not implemented.');
+    try {
+      const {
+        params: { id },
+      } = req;
+
+      return this.service.findOne(id);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async create(req: Request, h: ResponseToolkit): Promise<Entity> {
