@@ -29,8 +29,12 @@ export abstract class PostgresRepository<Entity extends Model> implements Reposi
     throw new Error('Method not implemented.');
   }
 
-  public async create(): Promise<Entity> {
-    throw new Error('Method not implemented.');
+  public async create(entity: Entity): Promise<Entity> {
+    const createQuery = async (): Promise<Entity> => {
+      return (await this.model.query().insert(entity)) as Entity;
+    };
+
+    return this.handleEntityCalls(createQuery);
   }
 
   public async update(): Promise<Entity> {

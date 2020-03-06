@@ -3,7 +3,7 @@ export interface ServiceInterface<Entity> {
 
   findOne(id: string): Promise<Entity>;
 
-  create(): Promise<Entity>;
+  create(entity: Entity): Promise<Entity>;
 
   update(): Promise<Entity>;
 

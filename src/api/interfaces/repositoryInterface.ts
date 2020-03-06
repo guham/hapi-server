@@ -5,7 +5,7 @@ export interface RepositoryInterface<Entity> {
 
   findOne(): Promise<Entity>;
 
-  create(): Promise<Entity>;
+  create(entity: Entity): Promise<Entity>;
 
   update(): Promise<Entity>;
 

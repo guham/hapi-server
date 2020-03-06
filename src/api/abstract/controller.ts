@@ -34,7 +34,14 @@ export abstract class Controller<Entity extends Model> implements ControllerInte
   }
 
   public async create(req: Request, h: ResponseToolkit): Promise<Entity> {
-    throw new Error('Method not implemented.');
+    try {
+      const { payload: entity } = req;
+
+      return this.service.create(entity as Entity);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async update(req: Request, h: ResponseToolkit): Promise<Entity> {

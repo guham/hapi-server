@@ -22,4 +22,11 @@ export const routes: ServerRoute[] = [
       handler: async (req, h): Promise<User> => userController.findOne(req, h),
     },
   },
+  {
+    method: 'POST',
+    path: '/users',
+    options: {
+      handler: async (req, h): Promise<User> => userController.create(req, h),
+    },
+  },
 ];
