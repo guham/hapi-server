@@ -36,8 +36,13 @@ export abstract class Service<Entity extends Model> implements ServiceInterface<
     }
   }
 
-  public async update(): Promise<Entity> {
-    throw new Error('Method not implemented.');
+  public async update(currentEntity: Entity, entity: Entity): Promise<Entity> {
+    try {
+      return this.repository.update(currentEntity, entity);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async delete(): Promise<void> {

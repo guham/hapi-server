@@ -7,7 +7,7 @@ export interface RepositoryInterface<Entity> {
 
   create(entity: Entity): Promise<Entity>;
 
-  update(): Promise<Entity>;
+  update(currentEntity: Entity, entity: Entity): Promise<Entity>;
 
   delete(): Promise<boolean>;
 

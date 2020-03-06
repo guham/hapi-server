@@ -45,7 +45,15 @@ export abstract class Controller<Entity extends Model> implements ControllerInte
   }
 
   public async update(req: Request, h: ResponseToolkit): Promise<Entity> {
-    throw new Error('Method not implemented.');
+    try {
+      const { payload: entity } = req;
+
+      const currentEntity = await this.findOne(req, h);
+      return this.service.update(currentEntity, entity as Entity);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 
   public async delete(req: Request, h: ResponseToolkit): Promise<Entity> {

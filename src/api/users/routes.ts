@@ -29,4 +29,11 @@ export const routes: ServerRoute[] = [
       handler: async (req, h): Promise<User> => userController.create(req, h),
     },
   },
+  {
+    method: 'PUT',
+    path: '/users/{id}',
+    options: {
+      handler: async (req, h): Promise<User> => userController.update(req, h),
+    },
+  },
 ];
