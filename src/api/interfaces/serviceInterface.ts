@@ -7,5 +7,5 @@ export interface ServiceInterface<Entity> {
 
   update(currentEntity: Entity, entity: Entity): Promise<Entity>;
 
-  delete(): Promise<void>;
+  delete(entity: Entity): Promise<boolean>;
 }

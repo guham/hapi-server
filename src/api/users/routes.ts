@@ -2,6 +2,7 @@ import { ServerRoute } from '@hapi/hapi';
 
 import { container } from '../../container';
 import { TYPES } from '../../types';
+import { SuccessfulResponse } from '../interfaces';
 import { UserController } from './controllers';
 import { User } from './models';
 
@@ -34,6 +35,13 @@ export const routes: ServerRoute[] = [
     path: '/users/{id}',
     options: {
       handler: async (req, h): Promise<User> => userController.update(req, h),
+    },
+  },
+  {
+    method: 'DELETE',
+    path: '/users/{id}',
+    options: {
+      handler: async (req, h): Promise<SuccessfulResponse> => userController.delete(req, h),
     },
   },
 ];

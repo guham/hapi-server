@@ -1,9 +1,11 @@
 import { injectable } from 'inversify';
+import { isUndefined } from 'lodash/fp';
 import { Model } from 'objection';
 
+import boom from '@hapi/boom';
 import { Request, ResponseToolkit } from '@hapi/hapi';
 
-import { ControllerInterface, LoggerInterface } from '../interfaces';
+import { ControllerInterface, LoggerInterface, SuccessfulResponse } from '../interfaces';
 import { Service } from './service';
 
 @injectable()
@@ -26,7 +28,12 @@ export abstract class Controller<Entity extends Model> implements ControllerInte
         params: { id },
       } = req;
 
-      return this.service.findOne(id);
+      const entity = await this.service.findOne(id);
+      if (isUndefined(entity)) {
+        throw boom.notFound('Entity not found');
+      }
+
+      return entity;
     } catch (error) {
       this.logger.error(error);
       throw error;
@@ -56,7 +63,14 @@ export abstract class Controller<Entity extends Model> implements ControllerInte
     }
   }
 
-  public async delete(req: Request, h: ResponseToolkit): Promise<Entity> {
-    throw new Error('Method not implemented.');
+  public async delete(req: Request, h: ResponseToolkit): Promise<SuccessfulResponse> {
+    try {
+      const currentEntity = await this.findOne(req, h);
+      await this.service.delete(currentEntity);
+      return { message: 'Resource successfully deleted' };
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 }

@@ -45,8 +45,14 @@ export abstract class PostgresRepository<Entity extends Model> implements Reposi
     return this.handleEntityCalls(updateQuery);
   }
 
-  public async delete(): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  public async delete(entity: Entity): Promise<boolean> {
+    const deleteQuery = async (): Promise<boolean> => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { id } = entity as any;
+      return (await this.model.query().deleteById(id)) === 1;
+    };
+
+    return this.handleEntityCalls(deleteQuery);
   }
 
   public async countAll(): Promise<number> {

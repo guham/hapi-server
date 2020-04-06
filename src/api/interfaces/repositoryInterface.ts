@@ -9,7 +9,7 @@ export interface RepositoryInterface<Entity> {
 
   update(currentEntity: Entity, entity: Entity): Promise<Entity>;
 
-  delete(): Promise<boolean>;
+  delete(entity: Entity): Promise<boolean>;
 
   countAll(): Promise<number>;
 }

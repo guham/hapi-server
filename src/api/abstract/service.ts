@@ -45,7 +45,12 @@ export abstract class Service<Entity extends Model> implements ServiceInterface<
     }
   }
 
-  public async delete(): Promise<void> {
-    throw new Error('Method not implemented.');
+  public async delete(entity: Entity): Promise<boolean> {
+    try {
+      return await this.repository.delete(entity);
+    } catch (error) {
+      this.logger.error(error);
+      throw error;
+    }
   }
 }
